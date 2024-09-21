@@ -50,7 +50,7 @@ void ping(const char *host, int port) {
     struct sockaddr_in server_addr;
     struct hostent *server;
 
-    // Create socket
+    
     sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         perror("Socket creation error");
@@ -59,7 +59,7 @@ void ping(const char *host, int port) {
         return;
     }
 
-    // Resolve host
+  
     server = gethostbyname(host);
     if (server == NULL) {
         fprintf(stderr, "Error resolving host\n");
@@ -69,7 +69,7 @@ void ping(const char *host, int port) {
         return;
     }
 
-    // Set up server address
+    
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     bcopy((char *)server->h_addr, (char *)&server_addr.sin_addr.s_addr, server->h_length);
@@ -121,7 +121,7 @@ int main(int argc, char *argv[]) {
 
     while (1) {
         ping(host, port);
-        sleep(1);  // Wait for 1 second between pings
+        sleep(1);  
     }
 
     return 0;
